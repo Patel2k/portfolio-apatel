@@ -56,8 +56,10 @@ subpath on Netlify, GitHub Pages, or any static host.
 
 ```
 .
-├── index.html               # Shell + fonts + no-flash theme script
+├── index.html               # Shell + fonts + favicon + no-flash theme script
 ├── vite.config.js
+├── public/
+│   └── favicon.svg          # Node-graph "A" monogram
 └── src/
     ├── main.jsx             # React entry
     ├── App.jsx              # Section composition
@@ -66,6 +68,7 @@ subpath on Netlify, GitHub Pages, or any static host.
     │   ├── resume.js        # ALL content lives here
     │   └── spline.js        # Optional Spline scene URLs
     └── components/
+        ├── Logo.jsx             # Nav monogram, recolours with the theme
         ├── NodeGlobe.jsx        # three.js node-network globe (theme-reactive)
         ├── SplineScene.jsx      # Optional Spline viewer slot
         ├── ThemeToggle.jsx      # Dark ⇄ light, persisted
@@ -98,8 +101,10 @@ To add a flow step, append `{ icon, name, desc, tech }`. `icon` must be a key in
 
 ## Theme
 
-The toggle lives in the nav and persists to `localStorage`; an inline script in
-`index.html` applies the saved theme before first paint so there's no flash.
+**Light is the default.** The toggle lives in the nav and persists an explicit
+choice to `localStorage`; an inline script in `index.html` applies the saved
+theme before first paint so there's no flash. System `prefers-color-scheme` is
+deliberately ignored — only a previous click switches you off light.
 Light tokens are defined under `html[data-theme='light']` in `styles.css`. The
 code card and monitor screen stay dark in both themes on purpose — screens
 should look like screens. The three.js scene switches from additive to normal

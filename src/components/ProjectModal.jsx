@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { flowIcons } from './flowIcons.jsx';
 
 /** Full-screen takeover with the animated step-by-step architecture flow. */
@@ -41,9 +42,15 @@ export default function ProjectModal({ project, onClose }) {
 
   const backdropClose = (e) => { if (e.target === e.currentTarget) onClose(); };
 
-  return (
+  // Portalled to <body>: the #work section is a `.wrap`, which sets z-index: 2
+  // and so opens a stacking context the takeover could never escape — it landed
+  // underneath the nav, hiding the close button.
+  return createPortal(
     <div className="takeover open" role="dialog" aria-modal="true" onClick={backdropClose}>
-      <button className="tk-close" aria-label="Close" onClick={onClose}>✕</button>
+      <button className="tk-close" aria-label="Close case study" onClick={onClose}>
+        <span className="tk-close-x" aria-hidden="true">✕</span>
+        <span className="tk-close-label">close<i>esc</i></span>
+      </button>
       <div className="takeover-inner" onClick={backdropClose}>
         <div className="takeover-panel">
           <div className="tk-eyebrow"><span className="dot" /> {p.tag} · {p.meta}</div>
@@ -89,6 +96,7 @@ export default function ProjectModal({ project, onClose }) {
           <div className="tk-stack-full">{p.stack.map((s) => <span key={s}>{s}</span>)}</div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

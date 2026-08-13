@@ -1,4 +1,5 @@
 import ThemeToggle from './ThemeToggle.jsx';
+import Logo from './Logo.jsx';
 
 const links = [
   { num: '01', label: 'about',  href: '#about'  },
@@ -12,7 +13,7 @@ export default function Nav() {
   return (
     <nav className="nav">
       <a className="nav-brand" href="#top">
-        <span className="nav-dot" aria-hidden="true" />
+        <Logo />
         <b>AJAY&nbsp;PATEL</b> <small>K.A.</small>
       </a>
       <ul className="nav-links" role="list">

@@ -104,10 +104,12 @@ h1,h2,h3,h4 { font-weight: 400; }
   border-bottom: 1px solid var(--line-soft);
 }
 .nav-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--paper); }
-.nav-dot {
-  width: 9px; height: 9px; border-radius: 2px; background: var(--violet);
-  box-shadow: 0 0 12px var(--violet-glow); animation: pulse 2.4s var(--ease) infinite; flex-shrink: 0;
+.nav-logo {
+  flex-shrink: 0; display: block;
+  filter: drop-shadow(0 0 10px var(--violet-glow));
+  transition: transform .35s var(--ease), filter .35s var(--ease);
 }
+.nav-brand:hover .nav-logo { transform: rotate(-6deg) scale(1.06); filter: drop-shadow(0 0 14px var(--magenta-glow)); }
 .nav-brand b { font-weight: 700; font-size: 14px; letter-spacing: .02em; }
 .nav-brand small { color: var(--paper-low); font-size: 11px; }
 .nav-links { list-style: none; display: flex; gap: 6px; margin: 0; padding: 0; }
@@ -380,7 +382,7 @@ h1,h2,h3,h4 { font-weight: 400; }
 
 /* ─── Project takeover ─────────────────────────────────────────────── */
 .takeover {
-  position: fixed; inset: 0; z-index: 100; display: none;
+  position: fixed; inset: 0; z-index: 900; display: none;
   background: rgba(6,5,12,0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   opacity: 0; transition: opacity .35s var(--ease);
 }
@@ -396,12 +398,23 @@ h1,h2,h3,h4 { font-weight: 400; }
 .takeover.open .takeover-panel { transform: translateY(0); opacity: 1; transition-delay: .08s; }
 
 .tk-close {
-  position: fixed; top: 22px; right: 28px; z-index: 110;
-  width: 44px; height: 44px; border-radius: 11px; cursor: pointer;
+  position: fixed; top: 18px; right: 24px; z-index: 910;
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  height: 44px; padding: 0 16px 0 14px; border-radius: 12px;
+  font: inherit; font-size: 12px; letter-spacing: .04em;
   background: var(--bg-2); border: 1px solid var(--line); color: var(--paper);
-  font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all .25s;
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.55), 0 0 0 1px var(--violet-soft);
+  transition: border-color .25s, color .25s, box-shadow .25s, background .25s;
 }
-.tk-close:hover { border-color: var(--magenta); color: var(--magenta); transform: rotate(90deg); }
+.tk-close:hover { border-color: var(--magenta); color: var(--magenta); box-shadow: 0 12px 34px -12px var(--magenta-glow), 0 0 0 1px var(--magenta-soft); }
+.tk-close-x { font-size: 15px; line-height: 1; transition: transform .25s var(--ease); }
+.tk-close:hover .tk-close-x { transform: rotate(90deg); }
+.tk-close-label { display: flex; align-items: center; gap: 8px; }
+.tk-close-label i {
+  font-style: normal; font-size: 10px; color: var(--paper-low);
+  border: 1px solid var(--line-soft); border-radius: 5px; padding: 2px 5px;
+}
+@media (max-width: 620px) { .tk-close-label { display: none; } .tk-close { padding: 0; width: 44px; justify-content: center; } }
 
 .tk-eyebrow { font-size: 12px; color: var(--violet); letter-spacing: .04em; display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
 .tk-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 10px var(--magenta-glow); }

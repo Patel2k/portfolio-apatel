@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 const KEY = 'ajay-portfolio-theme';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   // adopt whatever the no-flash script in index.html already set
   useEffect(() => {
-    setTheme(document.documentElement.dataset.theme || 'dark');
+    setTheme(document.documentElement.dataset.theme || 'light');
   }, []);
 
   const toggle = () => {

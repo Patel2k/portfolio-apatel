@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +9,16 @@
 <meta property="og:title" content="Ajay Patel K A — GenAI & Full-Stack Engineer" />
 <meta property="og:description" content="Turning Generative AI from a demo into dependable production systems." />
 <meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<link rel="apple-touch-icon" href="./favicon.svg" />
+<meta name="theme-color" content="#f6f5fb" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <script>
-/* Apply the saved theme before first paint so there is no flash. */
-(function(){try{var t=localStorage.getItem('ajay-portfolio-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');}catch(e){document.documentElement.dataset.theme='dark';}})();
+/* Apply the saved theme before first paint so there is no flash.
+   Light is the default; only a previous explicit choice overrides it. */
+(function(){try{var t=localStorage.getItem('ajay-portfolio-theme');document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:'light';}catch(e){document.documentElement.dataset.theme='light';}})();
 </script>
 </head>
 <body>
