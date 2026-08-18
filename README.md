@@ -8,7 +8,7 @@ project, and a **full-screen animated architecture-flow** case study per build.
 
 Plain **React 18 + Vite 5** — no framework, no SSR, ships as static files.
 
-**Live:** https://ajayportfolio-blush.vercel.app
+**Live:** https://portfolio-apatel.vercel.app
 
 ## Quick start
 
